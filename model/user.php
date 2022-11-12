@@ -16,14 +16,14 @@ class User{
     public static function login($name, $pass, mysqli $conn) {
 
         $query = "SELECT * FROM users WHERE username='".$name."' and userPass='".$pass."'";
-        return $conn->query($query);
+        return $conn->query($query); //bool
     }
 
     public static function register($name, $pass, $mail, mysqli $conn) {
         //ubaci u bazu
         $query = "INSERT INTO `users`(`username`, `userPass`, `userEmail`) 
         VALUES ('".$name."','".$pass."','".$mail."')";
-        return $conn->query($query); //vrati true ako je uspesno
+        return $conn->query($query); //bool
     }
 }
 
