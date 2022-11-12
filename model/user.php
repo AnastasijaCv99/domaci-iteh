@@ -19,9 +19,12 @@ class User{
         return $conn->query($query);
     }
 
-    /*public function register(){
-        //uzmi ovo isto ko iz logina i dodaj query za ubacivanje u bazu
-    }*/
+    public static function register($name, $pass, $mail, mysqli $conn) {
+        //ubaci u bazu
+        $query = "INSERT INTO `users`(`username`, `userPass`, `userEmail`) 
+        VALUES ('".$name."','".$pass."','".$mail."')";
+        return $conn->query($query); //vrati true ako je uspesno
+    }
 }
 
 
