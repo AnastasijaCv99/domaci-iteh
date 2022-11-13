@@ -1,0 +1,85 @@
+body {
+    background-color: #cb95e4;
+}
+
+h2 {
+    color: white;
+    margin-left: 2cm;
+    font-weight: bolder;
+    text-decoration: underline;
+}
+
+.split {
+    height: 100%;
+    width: 70%;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    overflow-x: hidden;
+    padding-top: 20px;
+    
+}
+
+.left {
+    left: 20;
+    background-color: #cb95e4;
+    
+}
+
+.right {
+    right: 0;
+    background-color:darkslateblue;
+}
+
+.centered {
+    position: absolute;
+    top: 44%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+
+.btn {
+    background-color: #4b3d7b;
+    border: none;
+    color: white;
+    padding: 20px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20px;
+    border-radius: 9px;
+    transition-duration: 0.4s;
+    border: #4b3d7b;
+    width: 250px;
+    margin-left: 2cm;
+  }
+
+  .btn:hover {
+    background-color: white;
+    
+    color: darkslateblue;
+  }
+
+ #prijava, #registracija{
+    color: white;
+    font-style: italic;
+    padding: 20px;
+    
+ }
+
+#registracija {
+    margin-left: 2cm;
+}
+
+
+p {
+    font-size: 20px;
+    margin-left: 3cm;
+}
+
+#opis {
+    text-align: center; 
+    /* centriraj tekst*/
+}
