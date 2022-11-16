@@ -1,0 +1,67 @@
+body{
+    background-color: beige;
+}
+
+.tabela {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 40px;
+}
+
+
+input[type=text], input[type=textarea] {
+    width: 80%;
+    padding: 10px 10px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border-radius: 5px;
+}
+
+.task-form {
+    width:250px;
+    padding:200px;
+    padding-top: 1cm;
+  }
+
+
+
+#btnDodaj, #btnObrisi, #btnIzmeni {
+    background-color: #4b3d7b;
+    border: none;
+    color: white;
+    /*padding: 20px 32px;*/
+    text-align: center;
+    text-decoration: none;
+    /*display: inline-block; */
+    font-size: 20px;
+    border-radius: 9px;
+    transition-duration: 0.4s;
+    border: #4b3d7b;
+    width: 200px;
+   /* margin-left: 2cm;*/
+  }
+
+#btnDodaj:hover {
+    background-color: #4b3d7b;
+    color: black;
+  }
+#btnObrisi:hover {
+    background-color: #4b3d7b;
+    color: black;
+  }
+#btnIzmeni:hover {
+    background-color: #4b3d7b;
+    color: black;
+  }
+/*
+#btnIzmeni{
+    margin-left: -7cm;
+}
+#btnObrisi {
+    margin-left: 7cm;
+}
+*/
+
+#naslov, #naslovdesno {
+    color: white;
+}

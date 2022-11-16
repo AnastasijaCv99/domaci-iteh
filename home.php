@@ -5,8 +5,8 @@ require("model/task.php");
 
 session_start();
 
-echo "bravo hehe\n\t";
-echo $_SESSION['userID'];
+//echo "bravo hehe\n\t";
+//echo $_SESSION['userID'];
 
 
 if (empty($_SESSION['in'])) {
@@ -29,100 +29,149 @@ if (!$result) {
 
 <head>
     <meta charset="UTF-8">
-    <!-- <link rel="stylesheet" type="text/css" href="css/style.css"> -->
+    <link rel="stylesheet" type="text/css" href="css/home.css">
     <title>Make your TO-DO list</title>
+        
 </head>
 
 
 <body> 
-
-    <h1>Napravi svoju to-do listu </h1>
-    <h3><a href="logout.php">odjavi se</a></h3>
-
+    <!--<div w3-include-html="menu.html" id="w3"></div>-->
      <!--Ubacivanje u listu-->
-     <div class="modal-content" style="border: 4px solid green;">
-            
-                <div class="modal-body">
-                    <div class="container task-form">
-
-                        <form action="#" method="post" id="addTasks">
-                            <h3 id="naslov" style="color: black" text-align="center">Dodaj task</h3>
-                            <div class="row">
+     <?php include "menu.html" ?>
+    <div> 
+        <table class="tabela" style="border: 10px beige; width:80%;">
+            <tr style="border: 5px beige;">
+                <th style="border: 5px beige; background-color: darkslateblue; width:50%;"><h3 id="naslov" style="text-align:center;">Dodaj task</h3></th>
+                <th style="border: 5px beige; background-color: darkslateblue; width:50%;"><h3 id="naslovdesno" style="text-align:center;">Tvoji taskovi</h3></th>
+            </tr>
+            <tr style="border: 5px beige;">
+                <td style="border: 3px darkslateblue; text-align:center;">
+                 <!--ubaci task -->
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <div class="task-form">
+                            <form action="#" method="post" id="addTasks">
+                                <div class="row">
                                 <div class="col-md-6">
-                                    <div class="form-group">
-                                        <input type="text" style="border: 1px solid black" name="taskTitle" class="form-control" placeholder="Naziv taska" value="" />
-                                    </div>
-                                    <div class="form-group">
-                                        <input type="text" style="border: 1px solid black" name="taskDescription" class="form-control" placeholder="Opis taska" value="" />
-                                    </div>
-                                    <div class="form-group">
-                                        <input type="text" style="border: 1px solid black" name="dateDue" class="form-control" placeholder="Do kad? format: YYYY-MM-DD" value="" />
-                                    </div>
-                                    <div class="form-group">
-                                        <input type="checkbox" name="taskImportant" class="form-control" value="0"/>
-                                        <label for="taskImportant">Vazno?</label><br>
-                                    </div>
-                                    <div class="form-group">
-                                        <input type="checkbox" name="taskUrgent" class="form-control" value="0"/>
-                                        <label for="taskUrgent">Hitno?</label><br>
-                                    </div>
-                                    <div class="form-group">
-                                        <button id="btnDodaj" type="submit" class="btn-succ" style="background-color: orange; border: 1px solid black;"><i class="glyphicon glyphicon-plus"></i> Dodaj task
-                                        </button>
+                                <div class="form-group">
+                                <label for="taskImportant">Unesi naziv taska:</label>
+                                    <input type="text" style="border: 1px solid black" name="taskTitle" class="form-control" placeholder="npr. domaci zadatak" value="" />
+                                    <br>
                                 </div>
-                            
-                            </div>
-
-
-                        
-                        </form>
-                    </div>
-                </div>
+                                <br>
+                                <div class="form-group">
+                                <label for="taskImportant">Unesi opis taska:</label>
+                                    <input type="textarea" style="border: 1px solid black" name="taskDescription" class="form-control" placeholder="npr. PHP aplikacija" value="" />
+                                    <br>
+                                </div>
+                                <br>
+                                <div class="form-group">
+                                <label for="taskImportant">Rok za task je:</label>
+                                    <input type="text" style="border: 1px solid black" name="dateDue" class="form-control" placeholder="format: YYYY-MM-DD" value="" />
+                                    <br>
+                                </div>
+                                <br>
+                                <div class="form-group">
+                                    <label for="taskImportant">Vazno?</label>
+                                    <input type="checkbox" name="taskImportant" class="form-control" value="0"/>
+                                    
+                                </div>
+                                <div class="form-group">
+                                    <label for="taskUrgent">Hitno?</label>
+                                    <input type="checkbox" name="taskUrgent" class="form-control" value="0"/>
+                                    
+                                </div>
+                                <br>
+                                <div class="form-group">
+                                    <button id="btnDodaj" type="submit" class="btn-succ" ><i class="glyphicon glyphicon-plus"></i> Dodaj task
+                                    </button>
+                                </div>
+                        </div>
+                </form>
+            </div>
+        </div>
     </div>
+                </td>
 
-    <!--Prikaz taskova -->
-    <div id="prikaz" class="panel panel-success" style="margin-top: 1%;">
-
-            <div class="panel-body">
-                <table id="myTable" class="table table-hover table-striped" style="color: black; background-color: grey;">
-                    <thead class="thead">
-                        <tr>
-                            <th scope="col">Naziv</th>
-                            <th scope="col">Opis</th>
-                            <th scope="col">Hitno</th>
-                            <th scope="col">Bitno</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php
-                        while ($red = $result->fetch_array()) {
-                        ?>
-                            <tr>
-                                <td><?php echo $red["taskTitle"] ?></td>
-                                <td><?php echo $red["taskDescription"] ?></td>
-                                <td><?php echo $red["taskUrgent"] ?></td>
-                                <td><?php echo $red["taskImportant"] ?></td>
-                                <td>
+                <td style="border: 3px darkslateblue; text-align:center; margin-top: 1cm; padding-top: 1cm;">
+                <!--Prikaz taskova -->
+                <div id="prikaz" class="panel panel-success">
+                    <div class="panel-body">
+                        <table id="myTable" class="taskovi" style="color: black; width:90%; margin-left: auto; margin-right: auto;">
+                            <thead class="thead">
+                                <tr style="text-decoration: underline;">
+                                    <th style="font-style: oblique; text-decoration: none;">RESENO</th>
+                                    <th scope="col">Naziv</th>
+                                    <th scope="col">Opis</th>
+                                    <th scope="col">Rok</th>
+                                    <th scope="col">Hitno</th>
+                                    <th scope="col">Bitno</th>
+                                </tr>
+                            </thead>
+                            <tbody class="tbody">
+                                <?php
+                            while ($red = $result->fetch_array()) {
+                                ?>
+                                    <tr style="text-align:left; background-color: white">
+                                        <td style="text-align:center;"> 
+                                            <label class="checked-btn">
+                                            <input type="checkbox" id="CheckedTask" name="cekiraj" value=<?php echo $red["taskID"] ?>>
+                                            <span class="checkmark"></span>
+                                        </td>
+                                        <!--ovde bi mogla funckija da radi nesto -->
+                                        <td><?php echo $red["taskTitle"] ?></td>
+                                        <td><?php echo $red["taskDescription"] ?></td>
+                                        <td><?php echo $red["dateDue"] ?></td>
+                                        <td><?php 
+                                        if($red["taskUrgent"]==1) {
+                                            echo "Da";
+                                        } else echo "Ne"; ?></td>
+                                        <td><?php 
+                                        if($red["taskImportant"]==1) {
+                                            echo "Da";
+                                        } else echo "Ne"; ?></td>
+                                    <td>
                                     <label class="custom-radio-btn">
-                                        <input type="radio" name="checked-donut" value=<?php echo $red["taskID"] ?>>
+                                        <input type="radio" id="izbor" name="odaberi" value=<?php echo $red["taskID"] ?>>
                                         <span class="checkmark"></span>
                                     </label>
-                                </td>
+                                    </td>
+                                    </tr>
+                                <?php
+                            }
+                                ?>      
+                            </tbody>
+                        </table>    
+                        <br>
+                            <div class="form-group">
+                                <button id="btnIzmeni" type="submit" class="btn-upd" ><i class="glyphicon glyphicon-plus"></i> Izmeni task</button>
+                            </div> 
+                        <br>
+                             
+                            <div class="form-group">
+                                <button id="btnObrisi" type="submit" class="btn-del" ><i class="glyphicon glyphicon-plus"></i> Obrisi task</button>
+                        <br>
+                            </div>
+                    </div>
+                </div>
+                </td>
+            </tr>
+         </table>
+    </div>
 
-                            </tr>
-                        <?php
-                        }
-                        ?>
-                        
-                    
-                    
 
 
-                    </tbody>
-                </table>
+
+
+
+    
+
+    
        
                 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-        <script src="js/add.js"> </script>         
+        <script src="js/add.js"> </script>
+        <script src="js/delete.js"> </script>          
 </body>
 </html>
