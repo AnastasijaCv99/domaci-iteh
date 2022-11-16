@@ -59,11 +59,11 @@ if (!$result) {
                                         <input type="text" style="border: 1px solid black" name="dateDue" class="form-control" placeholder="Do kad? format: YYYY-MM-DD" value="" />
                                     </div>
                                     <div class="form-group">
-                                        <input type="checkbox" name="taskImportant" class="form-control" value="1"/>
+                                        <input type="checkbox" name="taskImportant" class="form-control" value="0"/>
                                         <label for="taskImportant">Vazno?</label><br>
                                     </div>
                                     <div class="form-group">
-                                        <input type="checkbox" name="taskUrgent" class="form-control" value="1" />
+                                        <input type="checkbox" name="taskUrgent" class="form-control" value="0"/>
                                         <label for="taskUrgent">Hitno?</label><br>
                                     </div>
                                     <div class="form-group">
