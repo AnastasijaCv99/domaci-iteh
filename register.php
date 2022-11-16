@@ -10,8 +10,17 @@ if (isset($_POST['username']) && isset($_POST['password']) && isset($_POST['emai
     $pass = $_POST['password'];
     $mail = $_POST['email'];
   
+    $newUser = new User(null, $name, $pass, $mail);
+    //$id = $conn->query("SELECT userId FROM users WHERE username='$newUser->username' and userPass='$newUser->userPass'");
+
+    //$rs = User::register($newUser, $conn);
+    //$rs->num_rows==1
     //register je bool, ako je uspesno odradio registraciju, prebaci ga na home
-    if(User::register($name, $pass, $mail, $conn)){
+    if(User::register($newUser, $conn)){
+    //    $_SESSION['userID'] = $id->fetch_assoc()['userId'];
+
+        $_SESSION['in']="userLoggedOrRegistered";
+        
         header("Location: home.php");
     }
     

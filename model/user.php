@@ -13,17 +13,17 @@ class User{
         $this->userEmail = $userEmail;
     }
 
-    public static function login($name, $pass, mysqli $conn) {
-
-        $query = "SELECT * FROM users WHERE username='".$name."' and userPass='".$pass."'";
-        return $conn->query($query); //bool
+    
+    public static function login($username, $userPass, mysqli $conn) {
+        $query = $conn->query("SELECT userId FROM users WHERE username='$username' and userPass='$userPass'");
+        return  $query;//$conn->query($query); //broj redova koji su se izvrsili
     }
 
-    public static function register($name, $pass, $mail, mysqli $conn) {
+    public static function register($user, mysqli $conn) {
         //ubaci u bazu
         $query = "INSERT INTO `users`(`username`, `userPass`, `userEmail`) 
-        VALUES ('".$name."','".$pass."','".$mail."')";
-        return $conn->query($query); //bool
+        VALUES ('$user->username','$user->userPass','$user->userEmail')";
+        return $conn->query($query); 
     }
 }
 

@@ -8,40 +8,24 @@ session_start();
 if (isset($_POST['username']) && isset($_POST['password'])) {
     $name = $_POST['username'];
     $pass = $_POST['password'];
-    //$userID = 1;
-//mozda umesto userID da ide broj 1
-   // $korisnik = new User($name, $pass);
-    
+        
+    //$korisnik = new User($name, $pass);
 
     $response = User::login($name, $pass, $conn);
-
-   if ($response->num_rows == 1) {
-        $_SESSION['userID'] = $response->fetch_assoc()['userID'];
-        header("Location: home.php");
-        exit();
-    } else {
-       echo '<script> alert("Wrong username or password"); </script>';
-    }
     
+   
 
-   /*  echo json_encode($response);
-
-    if ($response) {
-        echo `
-        <script>
-        alert("Uspesno ste se ulogovali");
-        </script>
-        `;
-        $_SESSION['userID'] = $korisnik->userID;
-        header('Location: home.php');
+   if ($response->num_rows==1) {
+        $_SESSION['in']="userLoggedOrRegistered";
+        $_SESSION['userID'] = $response->fetch_assoc()['userId'];  //$korisnik->userID
+       
+        //$_SESSION['userID'] = $response;//$korisnik->userID
+        header("Location: home.php");
+       
         exit();
     } else {
-        echo `
-        <script>
-        alert("Wrong username or password");
-        </script>
-        `;
-    }*/
+       echo "Wrong username or password";
+    }
 
 }
 
