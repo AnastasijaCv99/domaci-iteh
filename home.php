@@ -6,7 +6,7 @@ require("model/task.php");
 session_start();
 
 echo "bravo hehe\n\t";
-//echo $_SESSION['userID'];
+echo $_SESSION['userID'];
 
 
 if (empty($_SESSION['in'])) {
