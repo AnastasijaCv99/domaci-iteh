@@ -34,13 +34,17 @@ class Task{
         return $conn->query($query);
     }
 
-
+    public static function deleteTask($taskID, mysqli $conn) {
+        $query = "DELETE FROM tasks WHERE taskId=$taskID";
+        return $conn->query($query);
+    }
 }
 //$taskID, $taskTitle, $taskDescription, $dateDue, $taskDone, $taskImportant, $taskUrgent, $userID
 /* task::addTask ----DONE
-		task::viewAllTasks
-		task::updateTask
-		task::deleteTask
+		task::viewAllTasks ---done
+		task::updateTask:checked
+        task::updateTask:
+		task::deleteTask ---
 		task::searchByDateDue
 		task::sortByDateDue
 		task::sortByUrgent

@@ -152,6 +152,31 @@ if (!$result) {
                             <div class="form-group">
                                 <button id="btnObrisi" type="submit" class="btn-del" ><i class="glyphicon glyphicon-plus"></i> Obrisi task</button>
                         <br>
+                        <!-- <script>
+                         $("#btnObrisi").click(function () {
+                            const checked = $("input[name=odaberi]:checked");
+
+                            <?php $status = Task::deleteTask($red["taskID"] , $conn); ?>
+
+                            request = $.ajax({
+                            url: "home.php",
+                            type: "post",
+                            data: { $red["taskID"]: checked.val() }
+                            });
+
+                            request.done(function (response, textStatus, jqXHR) {
+                                if (response === "Succ") {
+                                checked.closest("tr").remove();
+                                console.log("Task je obrisan ");
+                                alert("Task je obrisan");
+                                } else {
+                                console.log("Task nije obrisan " + $_POST['taskID']);
+                                alert("Task nije obrisan");
+                                location.reload(true);
+                                }
+                                });
+                         })
+                         </script> -->
                             </div>
                     </div>
                 </div>
