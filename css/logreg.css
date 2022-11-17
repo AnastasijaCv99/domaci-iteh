@@ -1,0 +1,32 @@
+body{
+    background-color: beige;
+}
+
+input[type=text], input[type=password] {
+    width: 50%;
+    padding: 10px 10px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border-radius: 5px;
+    
+}
+
+.btn-sub{
+    background-color: #4b3d7b;
+    border: none;
+    color: white;
+    /*padding: 20px 32px;*/
+    text-align: center;
+    text-decoration: none;
+    /*display: inline-block; */
+    font-size: 20px;
+    border-radius: 9px;
+    transition-duration: 0.4s;
+    border: #4b3d7b;
+    width: 200px;
+}
+
+.login-form, .register-form{
+    margin-top: 2cm;
+    text-align: center;
+}

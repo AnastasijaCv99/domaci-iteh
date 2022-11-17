@@ -44,7 +44,7 @@ if (isset($_POST['username']) && isset($_POST['password']) && isset($_POST['emai
 
 <head>
     <meta charset="UTF-8">
-    <!-- <link rel="stylesheet" type="text/css" href="css/style.css"> -->
+    <link rel="stylesheet" type="text/css" href="css/logreg.css"> 
     <title>Make your TO-DO list</title>
 
 </head>
@@ -52,7 +52,7 @@ if (isset($_POST['username']) && isset($_POST['password']) && isset($_POST['emai
 <body>
 
     <div class="register-form">
-        <h3>LOGIN</h3>
+        <h3>REGISTER</h3>
         <div class="main-div">
             <form method="POST" action="#">
                 <div class="container">
@@ -65,12 +65,13 @@ if (isset($_POST['username']) && isset($_POST['password']) && isset($_POST['emai
                     <label class="email">E-mail</label>
                     <input type="text" name="email" class="form-control" required>
                     <br>
-                    <button type="submit" class="btn btn-primary" name="submit">Registruj se</button>
+                    <button type="submit" class="btn-sub" name="submit">Registruj se</button>
                 </div>
 
             </form>
         </div>
-        <h3><a href="index.php">LOGIN</a></h3>
+        
+        <h3><a href="index.php">Imas nalog? Login</a></h3>
 
     </div>
 

@@ -18,7 +18,7 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
    if ($response->num_rows==1) {
         $_SESSION['in']="userLoggedOrRegistered";
         $_SESSION['userID'] = $response->fetch_assoc()['userId'];  //$korisnik->userID
-       
+        
         //$_SESSION['userID'] = $response;//$korisnik->userID
         header("Location: home.php");
        
@@ -37,7 +37,7 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
 
 <head>
     <meta charset="UTF-8">
-    <!-- <link rel="stylesheet" type="text/css" href="css/style.css"> -->
+    <link rel="stylesheet" type="text/css" href="css/logreg.css"> 
     <title>Make your TO-DO list</title>
 
 </head>
@@ -49,12 +49,13 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
         <div class="main-div">
             <form method="POST" action="#">
                 <div class="container">
-                    <label class="username">Korisnik</label>
+                    <label class="username">Korisnicko ime:</label>
                     <input type="text" name="username" class="form-control" required>
                     <br>
                     <label for="password">Lozinka</label>
                     <input type="password" name="password" class="form-control" required>
-                    <button type="submit" class="btn btn-primary" name="submit">Prijavi se</button>
+                    <br>
+                    <button type="submit" class="btn-sub" name="submit">Prijavi se</button>
                 </div>
 
             </form>
