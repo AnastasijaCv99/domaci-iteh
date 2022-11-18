@@ -30,9 +30,22 @@ if (($_POST["taskTitle"]!='')  &&
     new Task(null, $_POST["taskTitle"], $_POST["taskDescription"], 
     $_POST["dateDue"], null, $_POST['taskImportant'], $_POST['taskUrgent'], $currUser);
 
-    $status = Task::addTask($task, $conn);
+    $response = Task::addTask($task, $conn);
 
-    $response = array();
+    if($response) {
+        $response_array['status'] = 'success';
+        echo json_encode($response_array);
+        } else {
+            $response_array['status'] = 'failed';
+            echo json_encode($response_array);
+            //echo $_POST['taskID'];
+        }
+    
+
+
+
+
+    /*$response = array();
 
     if ($status) {
         $response['success']= "Succ";
@@ -40,7 +53,7 @@ if (($_POST["taskTitle"]!='')  &&
     $response['error']= "Err";
     }
     exit(json_encode($response));
-
+*/
 }
 
 ?>

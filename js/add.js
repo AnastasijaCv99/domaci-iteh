@@ -36,6 +36,23 @@ $("#addTasks").submit(function() {
         url:"handler/addTasks.php",
         type: "post",
         data: $data,
+        dataType: "json",
+        success: function (data) {
+            if (data.status == 'success') {
+                alert("Dodali ste novi task!");
+                location.reload(true);
+    
+            } else if (data.status == 'error') {
+                alert(data.status);
+            }
+        }
+    });
+
+//prethodni ajax
+    /*$.ajax({
+        url:"handler/addTasks.php",
+        type: "post",
+        data: $data,
     }).done(function(response){
         if(response['success']){
             alert("aaa");
@@ -43,7 +60,7 @@ $("#addTasks").submit(function() {
         }
         //alert(response);
     });
-
+*/
    /* request.done(function(response){
         if(response === 'Succ') {
             alert("taks dodat");
