@@ -48,15 +48,20 @@ class Task{
         $q = "UPDATE `tasks` SET `taskDone`=0 WHERE taskID=$taskID";
         return $conn->query($q);
     }
+
+    public function SearchByNotDone(mysqli $conn) {
+        $query = "SELECT * FROM tasks WHERE taskDone=0";
+        return $conn->query($query);
+    }
 }
 //$taskID, $taskTitle, $taskDescription, $dateDue, $taskDone, $taskImportant, $taskUrgent, $userID
 /* task::addTask ----DONE
 		task::viewAllTasks ---done
-		task::updateTask:checked
-		task::deleteTask ---
-		task::searchByDateDue
+		task::updateTask:checked ---done
+		task::deleteTask --- done
 		task::sortByDateDue
 		task::sortByUrgent
 		task::sortByImportant
+        task::SortByDone
 		task::sortByGetLast */
 ?>

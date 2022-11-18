@@ -14,8 +14,6 @@ if (empty($_SESSION['in'])) {
     exit();
 }
 
-//echo '$_SESSION['userID']';
-
 $result = Task::viewAllTasks($conn);
 if (!$result) {
     echo "Greska kod upita<br>";
@@ -100,6 +98,17 @@ if (!$result) {
                 <div id="prikaz" class="panel panel-success">
                     <div class="panel-body">
                         <table id="myTable" class="taskovi" style="color: black; width:90%; margin-left: auto; margin-right: auto;">
+
+                        <label for="search">Prikazi:</label>
+
+                        <select name="search" id="search-select">
+                            <option value="Sve" selected>Sve</option>
+                            <option value="Neodradjeno">Samo neodradjeno</option>
+                            <option value="Bitno">Samo bitno</option>
+                            <option value="Hitno">Samo hitno</option>
+                        </select>
+                        <br>
+                        <br>
                             <thead class="thead">
                                 <tr style="text-decoration: underline;">
                                     <th style="font-style: oblique; text-decoration: none;">RESENO</th>
@@ -111,27 +120,49 @@ if (!$result) {
                                 </tr>
                             </thead>
                             <tbody class="tbody">
+                                <!-- [pocetak phpa-->
                                 <?php
                             while ($red = $result->fetch_array()) {
                                 ?>
                                     <tr class="redic" style="text-align:left; background-color: white" id="row<?php echo $red['taskID']?>">
                                         <td style="text-align:center;"> 
                                             <label class="checked-btn">
+                                                <!--ako je checked, prikazi da je checked, i odcekiraj -->
                                                 <?php 
-                                                    if($red["taskDone"]==1) {//ako je u bazi checked, da uvek stoji checked
+                                                    if($red["taskDone"]==1) {
                                                 ?>
-                                            <input type="checkbox" id="CheckedTask" name="cekiraj" onclick="updateTaskUncheck(<?php echo $red['taskID']?>)" value=<?php echo $red["taskID"] ?>  checked>
-                                            <span class="checkmark"></span>
+                                            <input type="checkbox" id="CheckedTask" name="cekiraj" onclick="updateTaskUncheck(<?php echo $red['taskID']?>)" value=<?php echo $red["taskID"] ?> checked>
+                                            <!--prikazi ovde one koji su checked sa strikethrough -->
+                                                      <!-- pocetak prikaza taskova-->
+                                                        <td><s> <?php echo $red["taskTitle"] ?> </s></td>
+                                                        <td><s> <?php echo $red["taskDescription"] ?> </s></td>
+                                                        <td><s> <?php echo $red["dateDue"] ?> </s></td>
+                                                        
+                                                        <td><s> <?php 
+                                                        if($red["taskImportant"]==1) {
+                                                            echo "Da";
+                                                        } else echo "Ne"; ?> </s></td>
+                                                        <td><s> <?php 
+                                                        if($red["taskUrgent"]==1) {
+                                                            echo "Da";
+                                                        } else echo "Ne"; ?> </s></td>
+                                                    <td>
+                                                    
+                                                    <label class="custom-radio-btn">
+                                                        <input type="button" id="izbor"  name="odaberi" onclick="deleteTask(<?php echo $red['taskID']?>)" value=Obrisi>
+                                                        <span class="checkmark"></span>
+                                                    </label>
+                                                    </td>
+                                                    </tr>  
+                                                     <!-- kraj prikaza taskova-->
+                                                           
+                                            <!--ako nije checked, prikazi to, i kad cekira nek ostane cekirano-->
                                                 <?php 
                                                     }else if($red["taskDone"]==0) {
                                                 ?>
                                             <input type="checkbox" id="CheckedTask" name="cekiraj" onclick="updateTaskChecked(<?php echo $red['taskID']?>)" value=<?php echo $red["taskID"] ?>>
                                             <span class="checkmark"></span>
-                                                <?php
-                                                }
-                                                ?>
-                                        </td>
-                                        <!--ovde bi mogla funckija da radi nesto -->
+                                            <!-- pocetak prikaza taskova-->
                                         <td><?php echo $red["taskTitle"] ?></td>
                                         <td><?php echo $red["taskDescription"] ?></td>
                                         <td><?php echo $red["dateDue"] ?></td>
@@ -152,9 +183,15 @@ if (!$result) {
                                     </label>
                                     </td>
                                     </tr>
+                                    <!-- kraj prikaza taskova-->
+                                                <?php 
+                                                }
+                                                ?>
+                                        </td>
+                                        
                                 <?php
                             }
-                                ?>      
+                                ?> <!-- kraj phpa-->      
                             </tbody>
                         </table>    
                         <br>
