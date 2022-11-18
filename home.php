@@ -114,11 +114,22 @@ if (!$result) {
                                 <?php
                             while ($red = $result->fetch_array()) {
                                 ?>
-                                    <tr style="text-align:left; background-color: white" id="row<?php echo $red['taskID']?>">
+                                    <tr class="redic" style="text-align:left; background-color: white" id="row<?php echo $red['taskID']?>">
                                         <td style="text-align:center;"> 
                                             <label class="checked-btn">
-                                            <input type="checkbox" id="CheckedTask" name="cekiraj" value=<?php echo $red["taskID"] ?>>
+                                                <?php 
+                                                    if($red["taskDone"]==1) {//ako je u bazi checked, da uvek stoji checked
+                                                ?>
+                                            <input type="checkbox" id="CheckedTask" name="cekiraj" onclick="updateTaskUncheck(<?php echo $red['taskID']?>)" value=<?php echo $red["taskID"] ?>  checked>
                                             <span class="checkmark"></span>
+                                                <?php 
+                                                    }else if($red["taskDone"]==0) {
+                                                ?>
+                                            <input type="checkbox" id="CheckedTask" name="cekiraj" onclick="updateTaskChecked(<?php echo $red['taskID']?>)" value=<?php echo $red["taskID"] ?>>
+                                            <span class="checkmark"></span>
+                                                <?php
+                                                }
+                                                ?>
                                         </td>
                                         <!--ovde bi mogla funckija da radi nesto -->
                                         <td><?php echo $red["taskTitle"] ?></td>
@@ -156,6 +167,7 @@ if (!$result) {
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="js/add.js"> </script>
-        <script src="js/delete.js"> </script>          
+        <script src="js/delete.js"> </script>  
+        <script src="js/update.js"> </script>         
 </body>
 </html>

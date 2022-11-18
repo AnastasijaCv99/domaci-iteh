@@ -38,12 +38,21 @@ class Task{
         $query = "DELETE FROM tasks WHERE taskId=$taskID";
         return $conn->query($query);
     }
+
+    public static function updateTaskChecked($taskID, mysqli $conn){
+        $q = "UPDATE `tasks` SET `taskDone`='1' WHERE taskID=$taskID";
+        return $conn->query($q);
+    }
+
+    public static function updateTaskUnCheck($taskID, mysqli $conn){
+        $q = "UPDATE `tasks` SET `taskDone`=0 WHERE taskID=$taskID";
+        return $conn->query($q);
+    }
 }
 //$taskID, $taskTitle, $taskDescription, $dateDue, $taskDone, $taskImportant, $taskUrgent, $userID
 /* task::addTask ----DONE
 		task::viewAllTasks ---done
 		task::updateTask:checked
-        task::updateTask:
 		task::deleteTask ---
 		task::searchByDateDue
 		task::sortByDateDue
