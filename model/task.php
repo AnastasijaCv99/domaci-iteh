@@ -25,7 +25,7 @@ class Task{
 
     public static function addTask(Task $task, mysqli $conn) {
         $query = "INSERT INTO tasks(taskTitle, taskDescription, dateDue, taskImportant, taskUrgent, userId) 
-        VALUES ('$task->taskTitle','$task->taskDescription','$task->dateDue','$task->taskImportant','$task->taskUrgent', '$task->userID')";
+        VALUES ('$task->taskTitle','$task->taskDescription','$task->dateDue',$task->taskImportant,$task->taskUrgent, '$task->userID')";
         return $conn->query($query);    
 }
     public static function viewAllTasks(mysqli $conn)

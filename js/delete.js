@@ -1,26 +1,22 @@
-//$("#btnObrisi").click(function () {
-/*function deleteTask(){
-    event.preventDefault();
-
-    const checked = $("input[name=odaberi]:checked");
+//$("#btnObrisi").onclick(function deleteTask() {
+function deleteTask(id){
+  event.preventDefault();
+  let rowId = "#row" + id;
+    const checked = $(rowId);
+    console.log("nesto");
 
     request = $.ajax({
-      url: "../handler/delete.php",
+      url: "handler/delete.php",
       type: "post",
-      data: { taskID: checked.val() }
-    });
-
-    request.done(function (response, textStatus, jqXHR) {
-
-      if (response === "Succ") {
+      dataType: "json",
+      data: { taskID: id },
+      success: function (data) {
+        if (data.status == 'success') {
+            alert(data.status);
         checked.closest("tr").remove();
-        console.log("Task je obrisan ");
-        alert("Task je obrisan");
-      } else {
-        console.log("Task nije obrisan " + $_POST['taskID']);
-        alert("Task nije obrisan");
-        location.reload(true);
-      }
-    });
+
+        } else if (data.status == 'error') {
+            alert(data.status);
+        }
+    }});
 }
-*/

@@ -1,23 +1,21 @@
 <?php
-/*
+
 require ("../dbBroker.php");
 require ("../model/task.php");
 
 session_start();
 $currUser=$_SESSION['userID'];
+$tas=$_POST['taskID'];
 
-if(isset($brisi)) {
+$response = Task::deleteTask($tas, $conn);
 
-    $status = Task::deleteTask($brisi, $conn);
-
-    if ($status) {
-        echo "Succ";
+if($response) {
+    $response_array['status'] = 'success';
+    echo json_encode($response_array);
     } else {
-        echo $status;
-        echo "Failed";
-        echo $_POST['taskID'];
+        $response_array['status'] = 'failed';
+        echo json_encode($response_array);
+        //echo $_POST['taskID'];
     }
-}
 
-*/
 ?> 
