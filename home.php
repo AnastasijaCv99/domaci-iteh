@@ -14,12 +14,16 @@ if (empty($_SESSION['in'])) {
     exit();
 }
 
-$result = Task::viewAllTasks($conn);
+/*$cookie_name = "user";
+$cookie_value = "John Doe";
+setcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/"); // 86400 = 1 day*/
+
+/*$result = Task::viewAllTasks($conn);
+
 if (!$result) {
     echo "Greska kod upita<br>";
-    
     die();
-}
+}*/
 ?>
 
 <!DOCTYPE html>
@@ -94,33 +98,69 @@ if (!$result) {
                 </td>
 
                 <td style="border: 3px darkslateblue; text-align:center; margin-top: 1cm; padding-top: 1cm;">
-                <!--Prikaz taskova -->
+
+                <!-- <div class="PrikazpoKrit">
+                                                            <form action="#" method="post">> 
+                                                            <label for="search">Prikazi:</label>
+
+                                                        <label for="searchByNotDone">Neodradjeni?</label>
+                                                        <input type="checkbox"  id="searchByNotDone" name="prikaz1"  value="Neodradjeni">
+
+                                                        <label for="searchByImp">Bitni?</label>
+                                                        <input type="checkbox"  id="searchByImp" name="prikaz2" value="Bitni">
+
+                                                        <label for="searchByUrg">Hitni?</label>
+                                                        <input type="checkbox"  id="searchByUrg" name="prikaz3" value="Hitni">
+                                                    
+                                                        <label for="searchByDateDue">Datum?</label>
+                                                        <input type="checkbox"  id="searchByDateDue" name="prikaz4" value="Datum">
+                                                            
+                                                            <div class="form-group">
+                                                                <input type="submit" value="Prikaz">
+                                                            </div>
+                                                            </form>
+                                                        
+                                                            <?php
+                                                              /*  if(isset($_POST['submit'])){
+                                                                
+                                                                $selected_val = $_POST['Neodradjeni'];  // Storing Selected Value In Variable
+                                                                echo "You have selected :" .$selected_val; 
+                                                                $result = Task::SearchByNotDone($conn);  // Displaying Selected Value
+                                                                }
+                                                                */
+                                                                 ?>
+                                                      -->
+                                                      
+        <!--Prikaz taskova -->
                 <div id="prikaz" class="panel panel-success">
                     <div class="panel-body">
+                        <!-- poziv viewAll i smestanje u result! -->
+                        <?php 
+                        $result = Task::viewAllTasks($conn);
+
+                        if (!$result) {
+                            echo "Greska kod upita<br>";
+                            die();
+                        }
+                        //ako user ima taskove, prikazi sve, ako nema nikakvih taskova, nemoj nista da mu prikazes od tabele! -->
+                        if ($result->num_rows>0) {
+                        ?>
                         <table id="myTable" class="taskovi" style="color: black; width:90%; margin-left: auto; margin-right: auto;">
-
-                        <label for="search">Prikazi:</label>
-
-                        <select name="search" id="search-select">
-                            <option value="Sve" selected>Sve</option>
-                            <option value="Neodradjeno">Samo neodradjeno</option>
-                            <option value="Bitno">Samo bitno</option>
-                            <option value="Hitno">Samo hitno</option>
-                        </select>
+                                                        
                         <br>
                         <br>
                             <thead class="thead">
                                 <tr style="text-decoration: underline;">
                                     <th style="font-style: oblique; text-decoration: none;">RESENO</th>
-                                    <th scope="col">Naziv</th>
-                                    <th scope="col">Opis</th>
-                                    <th scope="col">Rok</th>
+                                    <th style="width:15%" scope="col">Naziv</th>
+                                    <th style="width:15%" scope="col">Opis</th>
+                                    <th style="width:30%" scope="col">Rok</th>
                                     <th scope="col">Bitno</th>
                                     <th scope="col">Hitno</th>
                                 </tr>
                             </thead>
                             <tbody class="tbody">
-                                <!-- [pocetak phpa-->
+                                <!-- pocetak phpa za prikaz svega-->
                                 <?php
                             while ($red = $result->fetch_array()) {
                                 ?>
@@ -187,10 +227,11 @@ if (!$result) {
                                                 <?php 
                                                 }
                                                 ?>
-                                        </td>
+                                    </td>
                                         
                                 <?php
                             }
+                        }
                                 ?> <!-- kraj phpa-->      
                             </tbody>
                         </table>    
@@ -208,3 +249,4 @@ if (!$result) {
         <script src="js/update.js"> </script>         
 </body>
 </html>
+

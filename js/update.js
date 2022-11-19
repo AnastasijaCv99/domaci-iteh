@@ -13,7 +13,6 @@ function updateTaskChecked(id){
             if (data.status == 'success') {
                 console.log("cekirano");
                 location.reload(true);
-                //<style> .redic {text-decoration-line: line-through;} </style>
             } else if (data.status == 'error') {
                 alert("neuspCekirano");
             }

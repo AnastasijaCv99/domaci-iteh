@@ -11,28 +11,21 @@ if (isset($_POST['username']) && isset($_POST['password']) && isset($_POST['emai
     $mail = $_POST['email'];
   
     $newUser = new User(null, $name, $pass, $mail);
-    
-    //$id = $conn->query("SELECT userId FROM users WHERE username='$newUser->username' and userPass='$newUser->userPass'");
-    //sta moze biti u if()
-    //User::register($newUser, $conn) ILI rs->num_rows==1
-    //$rs->num_rows==1
+
 
     $rs = User::register($newUser, $conn);
     $id = $conn->insert_id;
-    //sa ovim insert_id ucitava stranu i taskove ali se ne vidi taj user u bazi
 
     
     //register je bool, ako je uspesno odradio registraciju, prebaci ga na home
     if($rs===TRUE){
-        //$_SESSION['userID'] = $rs->fetch_assoc()['userId'];
-        //$_SESSION['userID'] = $newUser->userID;
-        
+               
         $_SESSION['in']="userLoggedOrRegistered";
         $_SESSION['userID']=$id;
         header("Location: home.php");
     }
     
- //napravi validaciju za unete stvari!!
+
     
 }
 
@@ -71,7 +64,7 @@ if (isset($_POST['username']) && isset($_POST['password']) && isset($_POST['emai
             </form>
         </div>
         
-        <h3><a href="index.php">Imas nalog? Login</a></h3>
+        <h3><a href="login.php">Imas nalog? Login</a></h3>
 
     </div>
 

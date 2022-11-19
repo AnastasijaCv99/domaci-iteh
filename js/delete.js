@@ -12,7 +12,7 @@ function deleteTask(id){
       data: { taskID: id },
       success: function (data) {
         if (data.status == 'success') {
-            alert(data.status);
+            alert("Izbrisali ste task!");
         checked.closest("tr").remove();
 
         } else if (data.status == 'error') {

@@ -7,10 +7,6 @@ session_start();
 
 $currUser=$_SESSION['userID'];
 
-/* &&
-    (isset($_POST["taskImportant"])|| !isset($_POST["taskImportant"])) &&
-    (isset($_POST["taskUrgent"]) || !isset($_POST["taskUrgent"]))*/
-
 if (($_POST["taskTitle"]!='')  && 
     ($_POST["taskDescription"]!='') && 
     ($_POST["dateDue"]!=''))
@@ -22,9 +18,6 @@ if (($_POST["taskTitle"]!='')  &&
         if ($_POST['taskUrgent']=='1') {
             $urg=1;
         } else $urg=0;
-
-        //$imp = isset($_POST['taskImportant']) ? 1 : 0;
-        //$urg = isset($_POST['taskUrgent']) ? 1 : 0;
 
     $task = 
     new Task(null, $_POST["taskTitle"], $_POST["taskDescription"], 
@@ -38,7 +31,6 @@ if (($_POST["taskTitle"]!='')  &&
         } else {
             $response_array['status'] = 'failed';
             echo json_encode($response_array);
-            //echo $_POST['taskID'];
         }
     
 

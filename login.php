@@ -46,13 +46,13 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
 
     <div class="login-form">
         <h3>LOGIN</h3>
-        <div class="main-div">
-            <form method="POST" action="#">
+        <div class="main-div" >
+            <form method="POST" action="#" >
                 <div class="container">
                     <label class="username">Korisnicko ime:</label>
                     <input type="text" name="username" class="form-control" required>
                     <br>
-                    <label for="password">Lozinka</label>
+                    <label for="password">Lozinka:</label>
                     <input type="password" name="password" class="form-control" required>
                     <br>
                     <button type="submit" class="btn-sub" name="submit">Prijavi se</button>

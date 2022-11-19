@@ -49,7 +49,7 @@ class Task{
         return $conn->query($q);
     }
 
-    public function SearchByNotDone(mysqli $conn) {
+    public static function SearchByNotDone(mysqli $conn) {
         $query = "SELECT * FROM tasks WHERE taskDone=0";
         return $conn->query($query);
     }

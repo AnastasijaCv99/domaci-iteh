@@ -24,7 +24,7 @@
     <div class="split right"> 
         <div class="centered">
             <img src="images/logo.png" alt="logo" style="width:300px;height:300px;">
-            <p id="opis"> Lorem ipsum dolor sit amet consectetur, adipisicing elit. Harum optio consequatur perferendis, maxime soluta deleniti repellendus ex nam aspernatur! Fugit reprehenderit repellat molestias repudiandae iusto magni aperiam earum ullam labore? </p>
+            <p id="opis">Aplikacija TO-DO list je tu za tebe! Olaksava ti svakodnevne aktivnosti pregledom liste taskova, mogucnosti da cekiras odradjene taskove i dodajes nove!</p>
     
         </div>
     </div>
