@@ -18,7 +18,7 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
    if ($response->num_rows==1) {
         $_SESSION['in']="userLoggedOrRegistered";
         $_SESSION['userID'] = $response->fetch_assoc()['userId'];  //$korisnik->userID
-        
+    
         //$_SESSION['userID'] = $response;//$korisnik->userID
         header("Location: home.php");
        

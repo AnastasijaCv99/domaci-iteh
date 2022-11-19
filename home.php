@@ -58,19 +58,19 @@ if (!$result) {
                                 <div class="col-md-6">
                                 <div class="form-group">
                                 <label for="taskTitle">Unesi naziv taska:</label>
-                                    <input type="text" style="border: 1px solid black" name="taskTitle" id="title" class="form-control" placeholder="npr. domaci zadatak" value="" />
+                                    <input type="text" style="border: 1px solid black" name="taskTitle" id="title" class="form-control" placeholder="npr. domaci zadatak" value="" required/>
                                     <br>
                                 </div>
                                 <br>
                                 <div class="form-group">
                                 <label for="taskDescription">Unesi opis taska:</label>
-                                    <input type="textarea" style="border: 1px solid black" name="taskDescription" id="disc" class="form-control" placeholder="npr. PHP aplikacija" value="" />
+                                    <input type="textarea" style="border: 1px solid black" name="taskDescription" id="disc" class="form-control" placeholder="npr. PHP aplikacija" value="" required/>
                                     <br>
                                 </div>
                                 <br>
                                 <div class="form-group">
                                 <label for="dateDue">Rok za task je:</label>
-                                    <input type="text" style="border: 1px solid black" name="dateDue" class="form-control" id="date" placeholder="format: YYYY-MM-DD" value="" />
+                                    <input type="text" style="border: 1px solid black" name="dateDue" class="form-control" id="date" placeholder="format: YYYY-MM-DD" value="" required/>
                                     <br>
                                 </div>
                                 <br>
@@ -99,38 +99,8 @@ if (!$result) {
 
                 <td style="border: 3px darkslateblue; text-align:center; margin-top: 1cm; padding-top: 1cm;">
 
-                <!-- <div class="PrikazpoKrit">
-                                                            <form action="#" method="post">> 
-                                                            <label for="search">Prikazi:</label>
-
-                                                        <label for="searchByNotDone">Neodradjeni?</label>
-                                                        <input type="checkbox"  id="searchByNotDone" name="prikaz1"  value="Neodradjeni">
-
-                                                        <label for="searchByImp">Bitni?</label>
-                                                        <input type="checkbox"  id="searchByImp" name="prikaz2" value="Bitni">
-
-                                                        <label for="searchByUrg">Hitni?</label>
-                                                        <input type="checkbox"  id="searchByUrg" name="prikaz3" value="Hitni">
-                                                    
-                                                        <label for="searchByDateDue">Datum?</label>
-                                                        <input type="checkbox"  id="searchByDateDue" name="prikaz4" value="Datum">
-                                                            
-                                                            <div class="form-group">
-                                                                <input type="submit" value="Prikaz">
-                                                            </div>
-                                                            </form>
-                                                        
-                                                            <?php
-                                                              /*  if(isset($_POST['submit'])){
-                                                                
-                                                                $selected_val = $_POST['Neodradjeni'];  // Storing Selected Value In Variable
-                                                                echo "You have selected :" .$selected_val; 
-                                                                $result = Task::SearchByNotDone($conn);  // Displaying Selected Value
-                                                                }
-                                                                */
-                                                                 ?>
-                                                      -->
                                                       
+
         <!--Prikaz taskova -->
                 <div id="prikaz" class="panel panel-success">
                     <div class="panel-body">
@@ -246,7 +216,8 @@ if (!$result) {
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="js/add.js"> </script>
         <script src="js/delete.js"> </script>  
-        <script src="js/update.js"> </script>         
+        <script src="js/update.js"> </script>     
+        <script src="js/search.js"> </script>      
 </body>
 </html>
 
